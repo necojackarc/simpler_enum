@@ -1,4 +1,4 @@
-# SimpleEnum
+# SimpleEnum [![Build Status](https://travis-ci.org/necojackarc/simple_enum.svg?branch=master)](https://travis-ci.org/necojackarc/simple_enum) [![Code Climate](https://codeclimate.com/github/necojackarc/simple_enum/badges/gpa.svg)](https://codeclimate.com/github/necojackarc/simple_enum) [![Test Coverage](https://codeclimate.com/github/necojackarc/simple_enum/badges/coverage.svg)](https://codeclimate.com/github/necojackarc/simple_enum/coverage)
 
 SimpleEnum provides really simple enumerated type.
 
