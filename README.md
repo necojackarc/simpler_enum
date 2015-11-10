@@ -1,8 +1,6 @@
 # SimpleEnum
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simple_enum`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+SimpleEnum provides really simple enumerated type.
 
 ## Installation
 
@@ -22,20 +20,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Any class can include `SimpleEnum` and you can define an enumerated type like this:
 
-## Development
+```ruby
+require "simple_enum"
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+class Person
+  include SimpleEnum
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+  simple_enum mood: {
+    awesome: 0,
+    excellent: 1,
+    great: 2,
+    good: 3,
+    fine: 4
+  }
 
-## Contributing
+  def initialize(mood: :fine)
+    self.mood = mood
+  end
+end
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/simple_enum. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
+```ruby
+[1] pry(main)> Person.moods
+=> {:awesome=>0, :excellent=>1, :great=>2, :good=>3, :fine=>4}
+[2] pry(main)> necojackarc = Person.new(mood: :awesome)
+=> #<Person:0x007fd5cbbf5dd0 @mood=0>
+[3] pry(main)> necojackarc.awesome?
+=> true
+[4] pry(main)> necojackarc.excellent?
+=> false
+[5] pry(main)> necojackarc.great!
+=> :great
+[6] pry(main)> necojackarc.awesome?
+=> false
+[7] pry(main)> necojackarc.great?
+=> true
+[8] pry(main)> necojackarc.mood = :fine
+=> :fine
+[9] pry(main)> necojackarc.great?
+=> false
+[10] pry(main)> necojackarc.fine?
+=> true
+[11] pry(main)> necojackarc.mood = 1
+=> 1
+[12] pry(main)> necojackarc.fine?
+=> false
+[13] pry(main)> necojackarc.excellent?
+=> true
+[14] pry(main)> necojackarc.mood
+=> :excellent
+```
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
