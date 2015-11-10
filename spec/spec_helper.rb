@@ -5,4 +5,4 @@ require "codeclimate-test-reporter"
 SimpleCov.start
 CodeClimate::TestReporter.start
 
-require "simple_enum"
+require "simpler_enum"

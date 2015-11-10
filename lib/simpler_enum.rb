@@ -1,14 +1,14 @@
 require "active_support"
 require "active_support/core_ext"
-require "simple_enum/version"
+require "simpler_enum/version"
 
-module SimpleEnum
+module SimplerEnum
   def self.included(base)
     base.extend ClassMethods
   end
 
   module ClassMethods
-    def simple_enum(single_size_hash)
+    def simpler_enum(single_size_hash)
       fail ArgumentError if single_size_hash.size != 1
 
       name, enum_values = single_size_hash.first

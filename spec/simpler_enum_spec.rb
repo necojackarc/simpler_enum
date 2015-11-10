@@ -1,12 +1,12 @@
 require "spec_helper"
 require "rspec/its"
 
-describe SimpleEnum do
+describe SimplerEnum do
   let(:described_class) do
     Class.new do
-      include SimpleEnum
+      include SimplerEnum
 
-      simple_enum status: {
+      simpler_enum status: {
         active: 0,
         inactive: 1
       }
@@ -26,7 +26,7 @@ describe SimpleEnum do
   describe "class" do
     subject { described_class }
 
-    it { is_expected.to respond_to :simple_enum }
+    it { is_expected.to respond_to :simpler_enum }
     its(:statuses) { is_expected.to eq statuses }
   end
 

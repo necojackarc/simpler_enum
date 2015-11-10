@@ -1,13 +1,13 @@
-# SimpleEnum [![Build Status](https://travis-ci.org/necojackarc/simple_enum.svg?branch=master)](https://travis-ci.org/necojackarc/simple_enum) [![Code Climate](https://codeclimate.com/github/necojackarc/simple_enum/badges/gpa.svg)](https://codeclimate.com/github/necojackarc/simple_enum) [![Test Coverage](https://codeclimate.com/github/necojackarc/simple_enum/badges/coverage.svg)](https://codeclimate.com/github/necojackarc/simple_enum/coverage)
+# SimplerEnum [![Build Status](https://travis-ci.org/necojackarc/simpler_enum.svg?branch=master)](https://travis-ci.org/necojackarc/simpler_enum) [![Code Climate](https://codeclimate.com/github/necojackarc/simpler_enum/badges/gpa.svg)](https://codeclimate.com/github/necojackarc/simpler_enum) [![Test Coverage](https://codeclimate.com/github/necojackarc/simpler_enum/badges/coverage.svg)](https://codeclimate.com/github/necojackarc/simpler_enum/coverage)
 
-SimpleEnum provides really simple enumerated type.
+SimplerEnum provides really simple enumerated type.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'simple_enum'
+gem 'simpler_enum'
 ```
 
 And then execute:
@@ -16,19 +16,19 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install simple_enum
+    $ gem install simpler_enum
 
 ## Usage
 
-Any class can include `SimpleEnum` and you can define an enumerated type like this:
+Any class can include `SimplerEnum` and you can define an enumerated type like this:
 
 ```ruby
-require "simple_enum"
+require "simpler_enum"
 
 class Person
-  include SimpleEnum
+  include SimplerEnum
 
-  simple_enum mood: {
+  simpler_enum mood: {
     awesome: 0,
     excellent: 1,
     great: 2,

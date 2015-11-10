@@ -1,16 +1,16 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'simple_enum/version'
+require 'simpler_enum/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "simple_enum"
-  spec.version       = SimpleEnum::VERSION
+  spec.name          = "simpler_enum"
+  spec.version       = SimplerEnum::VERSION
   spec.authors       = ["necojackarc"]
   spec.email         = ["necojackarc@gmail.com"]
 
-  spec.summary       = %q{Simple Enumerated Type}
-  spec.description   = %q{simple_enum provides really simple enumerated type}
-  spec.homepage      = "https://github.com/necojackarc/simple_enum"
+  spec.summary       = %q{Simpler Enumerated Type}
+  spec.description   = %q{simpler_enum provides really simple enumerated type}
+  spec.homepage      = "https://github.com/necojackarc/simpler_enum"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
