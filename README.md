@@ -63,7 +63,7 @@ end
 => false
 [10] pry(main)> necojackarc.fine?
 => true
-[11] pry(main)> necojackarc.mood = 1
+[11] pry(main)> necojackarc.mood = 1 # excellent
 => 1
 [12] pry(main)> necojackarc.fine?
 => false
