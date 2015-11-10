@@ -6,16 +6,14 @@ describe SimpleEnum do
     Class.new do
       include SimpleEnum
 
-      attr_accessor :status
-
-      def initialize(status: nil)
-        @status = status
-      end
-
       simple_enum status: {
         active: 0,
         inactive: 1
       }
+
+      def initialize(status: nil)
+        @status = status
+      end
     end
   end
   let(:statuses) do
