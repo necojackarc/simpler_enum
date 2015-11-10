@@ -45,7 +45,7 @@ describe SimpleEnum do
     context "initial status is active" do
       let(:status) { described_class.statuses[:active] }
 
-      its(:status) { is_expected.to eq statuses[:active] }
+      its(:status) { is_expected.to eq :active }
       its(:active?) { is_expected.to eq true }
       its(:inactive?) { is_expected.to eq false }
 
@@ -54,7 +54,7 @@ describe SimpleEnum do
           described_instance.inactive!
         end
 
-        its(:status) { is_expected.to eq statuses[:inactive] }
+        its(:status) { is_expected.to eq :inactive }
         its(:active?) { is_expected.to eq false }
         its(:inactive?) { is_expected.to eq true }
       end
@@ -63,7 +63,7 @@ describe SimpleEnum do
     context "initial status is inactive" do
       let(:status) { described_class.statuses[:inactive] }
 
-      its(:status) { is_expected.to eq statuses[:inactive] }
+      its(:status) { is_expected.to eq :inactive }
       its(:active?) { is_expected.to eq false }
       its(:inactive?) { is_expected.to eq true }
 
@@ -72,9 +72,27 @@ describe SimpleEnum do
           described_instance.active!
         end
 
-        its(:status) { is_expected.to eq statuses[:active] }
+        its(:status) { is_expected.to eq :active }
         its(:active?) { is_expected.to eq true }
         its(:inactive?) { is_expected.to eq false }
+      end
+    end
+
+    describe "#status=" do
+      context "set by integer" do
+        before do
+          described_instance.status = statuses[:active]
+        end
+
+        its(:status) { is_expected.to eq :active }
+      end
+
+      context "set by symbol" do
+        before do
+          described_instance.status = :active
+        end
+
+        its(:status) { is_expected.to eq :active }
       end
     end
   end
