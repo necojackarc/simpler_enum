@@ -4,7 +4,7 @@ SimplerEnum provides Rails like enumerated type.
 
 It reproduces part of [ActiveRecord::Enum](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) features.
 
-I hope it will help you when you want to use [ActiveRecord::Enum](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) in your older Rails version repositories.
+I hope it will help you when you want to use [ActiveRecord::Enum](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) in your not Rails repositories or older Rails version repositories.
 
 ## Supported Ruby versions
 
