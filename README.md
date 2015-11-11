@@ -1,6 +1,10 @@
 # SimplerEnum [![Build Status](https://travis-ci.org/necojackarc/simpler_enum.svg?branch=master)](https://travis-ci.org/necojackarc/simpler_enum) [![Code Climate](https://codeclimate.com/github/necojackarc/simpler_enum/badges/gpa.svg)](https://codeclimate.com/github/necojackarc/simpler_enum) [![Test Coverage](https://codeclimate.com/github/necojackarc/simpler_enum/badges/coverage.svg)](https://codeclimate.com/github/necojackarc/simpler_enum/coverage)
 
-SimplerEnum provides really simple enumerated type.
+SimplerEnum provides Rails like enumerated type.
+
+It reproduces part of [ActiveRecord::Enum](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) features.
+
+I hope it will help you when you want to use [ActiveRecord::Enum](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) in your older Rails version repositories.
 
 ## Supported Ruby versions
 
@@ -63,7 +67,7 @@ class Person
 end
 ```
 
-Both are behave like this:
+Both behave like this:
 
 ```ruby
 [1] pry(main)> Person.moods
