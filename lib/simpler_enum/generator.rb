@@ -34,8 +34,8 @@ module SimplerEnum
 
     def define_write_attribute!
       @klass.class_eval do
-        define_method :write_attribute do |key, value|
-          super rescue instance_variable_set("@#{key}", value)
+        define_method :write_attribute do |key, val|
+          super rescue instance_variable_set("@#{key}", val) # rubocop:disable Style/RescueModifier
         end
       end
     end
@@ -43,7 +43,7 @@ module SimplerEnum
     def define_read_attribute!
       @klass.class_eval do
         define_method :read_attribute do |key|
-          super rescue instance_variable_get("@#{key}")
+          super rescue instance_variable_get("@#{key}") # rubocop:disable Style/RescueModifier
         end
       end
     end
