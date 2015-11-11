@@ -3,7 +3,17 @@ module SimplerEnum
     def initialize(klass, enum_name, enum_values)
       @klass = klass
       @enum_name = enum_name
-      @enum_values = enum_values
+      @enum_values =
+        case
+        when enum_values.is_a?(Array)
+          enum_values.zip(0...enum_values.size).reduce({}) do |hash, (key, val)|
+            hash.merge!(key => val)
+          end
+        when enum_values.is_a?(Hash)
+          enum_values
+        else
+          fail ArgumentError
+        end
     end
 
     def execute!

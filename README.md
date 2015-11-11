@@ -28,6 +28,22 @@ require "simpler_enum"
 class Person
   include SimplerEnum
 
+  simpler_enum mood: %i(awesome excellent great good fine)
+
+  def initialize(mood: :fine)
+    self.mood = mood
+  end
+end
+```
+
+Or,
+
+```ruby
+require "simpler_enum"
+
+class Person
+  include SimplerEnum
+
   simpler_enum mood: {
     awesome: 0,
     excellent: 1,
@@ -41,6 +57,8 @@ class Person
   end
 end
 ```
+
+Both are behave like this:
 
 ```ruby
 [1] pry(main)> Person.moods
