@@ -9,8 +9,8 @@ module SimplerEnum
     def execute!
       define_read_enum_values_method_to_class!
 
-      define_read_attribute!
-      define_write_attribute!
+      define_read_attribute_to_instance!
+      define_write_attribute_to_instance!
 
       define_read_enum_value_method_to_instance!
       define_write_enum_value_method_to_instance!
@@ -32,7 +32,7 @@ module SimplerEnum
       end
     end
 
-    def define_write_attribute!
+    def define_write_attribute_to_instance!
       @klass.class_eval do
         define_method :write_attribute do |key, val|
           super rescue instance_variable_set("@#{key}", val) # rubocop:disable Style/RescueModifier
@@ -40,7 +40,7 @@ module SimplerEnum
       end
     end
 
-    def define_read_attribute!
+    def define_read_attribute_to_instance!
       @klass.class_eval do
         define_method :read_attribute do |key|
           super rescue instance_variable_get("@#{key}") # rubocop:disable Style/RescueModifier

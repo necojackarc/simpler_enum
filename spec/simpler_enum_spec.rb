@@ -11,8 +11,8 @@ describe SimplerEnum do
         inactive: 1
       }
 
-      def initialize(status: nil)
-        @status = status
+      def initialize(option = {})
+        @status = option.key?(:status) ? option[:status] : nil
       end
     end
   end
@@ -36,7 +36,7 @@ describe SimplerEnum do
 
     subject { described_instance }
 
-    %i(active? active! inactive? inactive!).each do |name|
+    [:active?, :active!, :inactive?, :inactive!].each do |name|
       it { is_expected.to respond_to name }
     end
 
