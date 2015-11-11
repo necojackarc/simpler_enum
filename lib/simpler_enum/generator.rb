@@ -8,6 +8,10 @@ module SimplerEnum
 
     def execute!
       define_read_enum_values_method_to_class!
+
+      define_read_attribute!
+      define_write_attribute!
+
       define_read_enum_value_method_to_instance!
       define_write_enum_value_method_to_instance!
 
@@ -28,21 +32,18 @@ module SimplerEnum
       end
     end
 
-    def define_query_enum_state_method_to_instance!(value_name)
-      @klass.class_exec(@enum_name) do |enum_name|
-        define_method "#{value_name}?" do
-          current_value = instance_variable_get("@#{enum_name}")
-          current_value == self.class.public_send(enum_name.to_s.pluralize.to_sym)[value_name]
+    def define_write_attribute!
+      @klass.class_eval do
+        define_method :write_attribute do |key, value|
+          super rescue instance_variable_set("@#{key}", value)
         end
       end
     end
 
-    def define_change_enum_state_method_to_instance!(value_name)
-      @klass.class_exec(@enum_name) do |enum_name|
-        define_method "#{value_name}!" do
-          next_value = self.class.public_send(enum_name.to_s.pluralize.to_sym)[value_name]
-          instance_variable_set("@#{enum_name}", next_value)
-          public_send(enum_name)
+    def define_read_attribute!
+      @klass.class_eval do
+        define_method :read_attribute do |key|
+          super rescue instance_variable_get("@#{key}")
         end
       end
     end
@@ -50,9 +51,7 @@ module SimplerEnum
     def define_read_enum_value_method_to_instance!
       @klass.class_exec(@enum_name) do |enum_name|
         define_method "#{enum_name}" do
-          # rubocop:disable Style/RescueModifier
-          value = super rescue instance_variable_get("@#{enum_name}")
-          # rubocop:enable Style/RescueModifier
+          value = read_attribute(enum_name)
           self.class.public_send(enum_name.to_s.pluralize.to_sym).key(value)
         end
       end
@@ -67,9 +66,26 @@ module SimplerEnum
             else
               value
             end
-          # rubocop:disable Style/RescueModifier
-          super(next_value) rescue instance_variable_set("@#{enum_name}", next_value)
-          # rubocop:enable Style/RescueModifier
+          write_attribute(enum_name, next_value)
+        end
+      end
+    end
+
+    def define_query_enum_state_method_to_instance!(value_name)
+      @klass.class_exec(@enum_name) do |enum_name|
+        define_method "#{value_name}?" do
+          current_value = read_attribute(enum_name)
+          current_value == self.class.public_send(enum_name.to_s.pluralize.to_sym)[value_name]
+        end
+      end
+    end
+
+    def define_change_enum_state_method_to_instance!(value_name)
+      @klass.class_exec(@enum_name) do |enum_name|
+        define_method "#{value_name}!" do
+          next_value = self.class.public_send(enum_name.to_s.pluralize.to_sym)[value_name]
+          write_attribute(enum_name, next_value)
+          public_send(enum_name)
         end
       end
     end
