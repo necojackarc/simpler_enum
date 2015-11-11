@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["necojackarc@gmail.com"]
 
   spec.summary       = %q{Simpler Enumerated Type}
-  spec.description   = %q{simpler_enum provides really simple enumerated type}
+  spec.description   = %q{SimplerEnum provides Rails like enumerated type}
   spec.homepage      = "https://github.com/necojackarc/simpler_enum"
   spec.license       = "MIT"
 
