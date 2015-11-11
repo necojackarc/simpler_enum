@@ -2,6 +2,11 @@
 
 SimplerEnum provides really simple enumerated type.
 
+## Supported Ruby versions
+
+- Ruby 1.9
+- Ruby 2.x
+
 ## Installation
 
 Add this line to your application's Gemfile:
