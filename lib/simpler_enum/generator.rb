@@ -48,7 +48,7 @@ module SimplerEnum
           begin
             super(key, val)
           rescue
-             instance_variable_set("@#{key}", val)
+            instance_variable_set("@#{key}", val)
           end
         end
       end
