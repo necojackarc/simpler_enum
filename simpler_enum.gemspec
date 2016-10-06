@@ -18,7 +18,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activesupport"
+  if Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new("2.2.2")
+    spec.add_dependency "activesupport", "~> 4.0"
+  else
+    spec.add_dependency "activesupport"
+  end
   spec.add_dependency "i18n"
 
   spec.add_development_dependency "bundler", "~> 1.10"
