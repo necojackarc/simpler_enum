@@ -79,6 +79,14 @@ describe SimplerEnum do
 
           its(:status) { is_expected.to eq :active }
         end
+
+        context "set by string" do
+          before do
+            described_instance.status = "active"
+          end
+
+          its(:status) { is_expected.to eq :active }
+        end
       end
     end
   end

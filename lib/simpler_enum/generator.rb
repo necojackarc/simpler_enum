@@ -79,8 +79,11 @@ module SimplerEnum
       @klass.class_exec(@enum_name) do |enum_name|
         define_method "#{enum_name}=" do |value|
           next_value =
-            if value.is_a?(Symbol)
+            case
+            when value.is_a?(Symbol)
               self.class.public_send(enum_name.to_s.pluralize.to_sym)[value]
+            when value.is_a?(String)
+              self.class.public_send(enum_name.to_s.pluralize.to_sym)[value.to_sym]
             else
               value
             end

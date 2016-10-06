@@ -98,6 +98,10 @@ Both behave like this:
 => true
 [14] pry(main)> necojackarc.mood
 => :excellent
+[15] pry(main)> necojackarc.mood = "good"
+=> "good"
+[16] pry(main)> necojackarc.mood
+=> :good
 ```
 
 ## License
