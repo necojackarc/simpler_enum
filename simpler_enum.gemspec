@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   if Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new("2.2.2")
-    spec.add_dependency "activesupport", "~> 4.0"
+    spec.add_dependency "activesupport", "< 5.0"
   else
     spec.add_dependency "activesupport"
   end
